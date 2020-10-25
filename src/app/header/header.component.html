@@ -1,0 +1,36 @@
+<header>
+    <nav class="nav">
+        <div class="logo">
+            <a class="logo-text">Booksbay</a>
+        </div>
+
+        <div class="burger" [ngClass]="responsiveMenu ? 'open' : ''" (click)="openMenu()">
+            <span class="bar"></span>
+        </div>
+        <ul class="nav-list" [ngClass]="responsiveMenu ? 'open' : ''">
+            <li class="nav-items">
+                <a class="nav-link">Explore</a>
+            </li>
+            <li class="nav-items">
+                <a class="nav-link">Recommendation</a>
+            </li>
+            <li class="nav-items">
+                <a class="nav-link">Categories</a>
+            </li>
+            <li class="nav-items">
+                <a class="nav-link" (click)="openSignUpModal()">Login</a>
+            </li>
+        </ul>
+
+
+    </nav>
+</header>
+
+<div class="banner">
+    <div class="banner-content">
+        <p class="banner-text">#1 way to buy and sell books</p>
+        <p class="banner-subtext">Join now to explore the largest social marketplace for used technical books</p>
+        <button class="sign-up"><i class="fa fa-envelope envelop"></i> SignUp with Email</button>
+
+    </div>
+</div>

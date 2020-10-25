@@ -1,0 +1,110 @@
+.main {
+    width: 70%;
+    height: auto;
+    margin: 0 auto;
+    padding: 1rem 1rem;
+    overflow-x: hidden;
+}
+
+.steps {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: .5rem .5rem;
+}
+
+.step-image {
+    position: relative;
+}
+
+img {
+    width: 350px;
+    height: 300px;
+    border-radius: 4px;
+    box-shadow: 8px 8px 5px #ccc;
+    -moz-box-shadow: 8px 8px 5px #ccc;
+    -webkit-box-shadow: 8px 8px 5px #ccc;
+    -khtml-box-shadow: 8px 8px 5px #ccc;
+}
+
+.step-heading {
+    text-transform: uppercase;
+    color: black;
+    font-size: 1.8rem;
+}
+
+.step-description {
+    font-size: 1.5rem;
+}
+
+.step-text-2 {
+    text-align: right;
+}
+
+.step-number {
+    position: absolute;
+    font-weight: bold;
+    font-size: 1.2rem;
+    padding: .5rem 1rem;
+    background-color: white;
+    color: crimson;
+    left: -2%;
+    top: 1%
+}
+
+@media screen and (max-width:900px) {
+    .main {
+        width: 90%;
+    }
+    /* 
+    img {
+        /* width: 300px;
+        min-height: 250px; 
+        border-radius: 4px;
+    }  */
+    /* .steps {
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: space-between;
+    }
+    .steps-2 {
+        flex-direction: column-reverse;
+        align-items: flex-end;
+    }
+    .step-heading {
+        text-transform: uppercase;
+        color: black;
+        font-size: 1.2rem;
+    }
+    .step-description {
+        font-size: 1rem;
+    } */
+}
+
+@media screen and (max-width:760px) {
+    .main {
+        width: 90%;
+    }
+    img {
+        width: 300px;
+        min-height: 250px;
+        border-radius: 4px;
+    }
+    .steps {
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: space-between;
+    }
+    .steps-2 {
+        flex-direction: column-reverse;
+        align-items: flex-end;
+    }
+    .step-heading {
+        text-transform: uppercase;
+        color: black;
+        font-size: 1.2rem;
+    }
+    .step-description {
+        font-size: 1rem;
+    }
+}

@@ -1,0 +1,142 @@
+    .main {
+        width: 100%;
+        margin-bottom: 30px;
+    }
+    
+    .container {
+        width: 80%;
+        margin: 0 auto;
+        height: 100%;
+    }
+    
+    .feature {
+        border: 4px solid whitesmoke;
+        background: rgb(0, 0, 0, 0.8);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        overflow: hidden;
+    }
+    
+    .feature-text {
+        color: white;
+        font-size: 1rem;
+        opacity: 1;
+        padding: .5rem;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        transition: all .2s;
+    }
+    
+    .feature-text:hover {
+        letter-spacing: .5px;
+    }
+    
+    .feature:hover {
+        opacity: 1;
+        cursor: pointer;
+    }
+    
+    .wrapper {
+        background: url(../../assets/gridimagw2.jpg);
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center;
+        background-color: white;
+        height: 80vh;
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        grid-template-rows: auto;
+        gap: 8px;
+        padding: 5px;
+        grid-template-areas: "feature1 feature2 feature2" "feature3 feature4 feature5" "feature6 feature4 feature7" "feature8 feature8 feature7";
+    }
+    
+    .feature1 {
+        grid-area: feature1;
+    }
+    
+    .feature2 {
+        grid-area: feature2;
+    }
+    
+    .feature3 {
+        grid-area: feature3;
+    }
+    
+    .feature4 {
+        grid-area: feature4;
+    }
+    
+    .feature5 {
+        grid-area: feature5;
+    }
+    
+    .feature6 {
+        grid-area: feature6;
+    }
+    
+    .feature7 {
+        grid-area: feature7;
+    }
+    
+    .feature8 {
+        grid-area: feature8;
+    }
+    
+    @media screen and (max-width:760px) {
+        .wrapper {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            align-items: center;
+            height: auto;
+        }
+        .feature {
+            width: 100%;
+            height: 200px;
+            margin-bottom: 10px;
+        }
+        .feature-text:hover {
+            font-size: 1.3rem;
+        }
+        .footer {
+            width: 100%;
+            justify-content: space-between;
+        }
+    }
+    
+    .main-footer {
+        height: 10vh;
+        width: 100%;
+        /* fallback for old browsers */
+        background: #FF416C;
+        /* fallback for old browsers */
+        background: -webkit-linear-gradient(to right, #FF4B2B, #FF416C);
+        /* Chrome 10-25, Safari 5.1-6 */
+        background: linear-gradient(to right, #FF4B2B, #FF416C);
+        /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+        overflow: hidden;
+    }
+    
+    .footer {
+        height: inherit;
+        width: 60%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        color: white;
+        font-weight: bold;
+        margin: 0 auto;
+    }
+    
+    span,
+    i {
+        padding: 2px 2px;
+    }
+    
+    .footer span:hover,
+    .footer i:hover {
+        color: black;
+        cursor: pointer;
+    }

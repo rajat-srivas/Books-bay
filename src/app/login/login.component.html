@@ -1,0 +1,96 @@
+<form #form="ngForm" *ngIf="!isLogin" class="p-3">
+    <h3 class="text-info text-center">Let's get started</h3>
+
+    <hr>
+    <div class="form-group">
+        <input type="text" class=" (focusout)=" checkUniqueEmail() " mt-2" [ngClass]="{'has-error': regEmail.invalid && (regEmail.dirty || regEmail.touched) }" placeholder="Email" name="regEmail" required #regEmail="ngModel" [(ngModel)]="newUser.email">
+        <div *ngIf="regEmail.invalid && (regEmail.dirty || regEmail.touched)">
+            <div *ngIf="regEmail.errors.required" class="help-block form-errors">Email is required</div>
+        </div>
+        <div *ngIf="!isValidEnail" class="help-block form-errors">Email already taken</div>
+    </div>
+    <div class="form-group mt-2">
+        <input class=" mt-2" placeholder="FirstName" name="firstName" [ngClass]="{'has-error': firstName.invalid && (firstName.dirty || firstName.touched) }" type="text" required #firstName="ngModel" [(ngModel)]="newUser.firstName">
+        <div *ngIf="firstName.invalid && (firstName.dirty || firstName.touched)">
+            <div *ngIf="firstName.errors.required" class="help-block form-errors">Firstname is required</div>
+        </div>
+    </div>
+    <div class="form-group mt-2">
+        <input class=" mt-2" placeholder="LastName" name="lastName" #lastName="ngModel" [ngClass]="{'has-error': lastName.invalid && (lastName.dirty || lastName.touched) }" required type="text" [(ngModel)]="newUser.lastName">
+        <div *ngIf="lastName.invalid && (lastName.dirty || lastName.touched)">
+            <div *ngIf="lastName.errors.required" class="help-block form-errors">Lastname is required</div>
+        </div>
+    </div>
+    <div class="form-group mt-2">
+        <input class=" mt-2" placeholder="Password" name="regPassword" #regPassword="ngModel" [ngClass]="{'has-error': regPassword.invalid && (regPassword.dirty || regPassword.touched) }" required minlength="8" type="password" [(ngModel)]="newUser.password">
+        <div *ngIf="regPassword.invalid && (regPassword.dirty || regPassword.touched)">
+            <div *ngIf="regPassword.errors.required" class="help-block form-errors">Password is required</div>
+            <div *ngIf="regPassword.errors.minlength" class="help-block form-errors">Password should have atleast 8 characters</div>
+        </div>
+    </div>
+    <div class="form-group mt-2">
+        <input class=" mt-2" placeholder="Confirm Password" name="confirmPassword" [ngClass]="{'has-error': confirmPassword.invalid && (confirmPassword.dirty || confirmPassword.touched) }" #confirmPassword="ngModel" appValidateEqual="regPassword" required type="password"
+            [(ngModel)]="newUser.confirmPassword">
+        <div *ngIf="confirmPassword.invalid && confirmPassword.dirty && confirmPassword.touched">
+            <div *ngIf="confirmPassword.errors.required" class="help-block form-errors">Confirm email is required</div>
+            <div *ngIf="confirmPassword.errors.notEqual" class="help-block form-errors">Password mismatch</div>
+        </div>
+    </div>
+    <div class="form-group mt-2">
+        <textarea class=" mt-2" placeholder="Address" type="text" name="address" [ngClass]="{'has-error': address.invalid && (address.dirty || address.touched) }" required #address="ngModel" [(ngModel)]="newUser.deliveryAddress"></textarea>
+        <div *ngIf="address.invalid && (address.dirty || address.touched)">
+            <div *ngIf="address.errors.required" class="help-block form-errors">Address is required</div>
+        </div>
+    </div>
+    <div class="form-group text-center d-flex justify-content-center">
+        <button [disabled]="!form.valid" class="btn btn-success text-uppercase font-weight-bold mt-1 btn-block mr-2" (click)="registerUser()" type="submit">Sign Up</button>
+        <button class="btn btn-outline-secondary text-uppercase font-weight-bold mt-1 btn-block mr-2" (click)="bsModalRef.hide()" name='' type="submit">Cancel</button>
+    </div>
+
+    <div>
+        <p>Already have an account? <strong class="font-weight-bold"><a (click) = "changeUserLoginStatus()">Login</a> </strong> </p>
+    </div>
+
+</form>
+
+
+<form #formLogin="ngForm" *ngIf="isLogin" class="p-4">
+    <h2 class="text-info text-center mb-2">Login Now</h2>
+    <!-- <div class="btn-group d-flex justify-content-center mt-4">
+
+        <button class="btn text-uppercase font-weight-bold btn-primary"><i class="fa fa-facebook-official" ></i>
+    Facebook</button>
+        <button class="btn text-uppercase font-weight-bold btn-danger"><i class="fa fa-google" ></i>
+      Google</button>
+    </div>
+    <p class="text-center font-weight-bold mt-3">OR</p> -->
+    <hr>
+    <div class="form-group">
+        <input type="text" class=" mt-2" [ngClass]="{'has-error': email.invalid && (email.dirty || email.touched) }" required name="email" #email="ngModel" [(ngModel)]="newUser.email" placeholder="Email">
+        <div *ngIf="email.invalid && (email.dirty || email.touched)">
+            <div *ngIf="email.errors.required" class="help-block form-errors">Email is required</div>
+        </div>
+    </div>
+    <div class="form-group mt-3">
+        <input class=" mt-3" placeholder="Password" [ngClass]="{'has-error': password.invalid && (password.dirty || password.touched) }" required name="password" #password="ngModel" [(ngModel)]="newUser.password" type="password">
+        <div *ngIf="password.invalid && (password.dirty || password.touched)">
+            <div *ngIf="password.errors.required" class="help-block form-errors">
+                Password is required.
+            </div>
+        </div>
+    </div>
+    <span class="unauthorized" *ngIf="!loginSuccess">Invalid Email/Password. Please try again</span>
+
+    <div class="form-group text-center btn-group d-flex justify-content-center">
+        <button class="btn btn-success text-uppercase font-weight-bold mt-3 btn-block mr-2" [disabled]="!formLogin.valid" type="submit" (click)="login()">Submit</button>
+        <button class="btn btn-outline-secondary text-uppercase font-weight-bold mt-3 btn-block mr-2" (click)="cancelClicked()" type="submit">Cancel</button>
+    </div>
+
+    <div class="text-center text-info">
+        Forgot Password?
+    </div>
+    <hr>
+    <div>
+        <p>Dont have an account? <strong class="font-weight-bold"><a (click) = "changeUserLoginStatus()">Sign Up</a> </strong> </p>
+    </div>
+</form>
